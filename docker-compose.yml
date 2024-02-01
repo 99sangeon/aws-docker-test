@@ -1,11 +1,8 @@
 version: '3.3'
 services:
-
-  spring:
+  app:
     container_name: springboot-container
     image: jeonsangeon/springboot:latest
-    expose:
-      - 8080
     ports:
       - 8080:8080
 

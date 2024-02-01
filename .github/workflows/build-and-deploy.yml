@@ -40,7 +40,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          sudo docker rm -f $(docker ps -qa)
+          sudo docker rm -f springboot-container
           sudo docker rmi ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
           sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
           sudo docker run -d --name springboot-container -p 8080:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
