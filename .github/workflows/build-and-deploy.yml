@@ -32,6 +32,7 @@ jobs:
         docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
         docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest .
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
+    
 
     - name: Deploy to AWS EC2
       uses: appleboy/ssh-action@master
@@ -41,6 +42,10 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         envs: GITHUB_SHA
-
+        script: |
+          sudo docker rm -f $(docker ps -qa)
+          sudo docker pull ${{ secrets.DOCKER_REPO }}/springboot:latest
+          sudo docker-compose up -d
+          sudo docker image prune -f
       
     
