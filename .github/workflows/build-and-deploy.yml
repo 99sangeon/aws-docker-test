@@ -40,6 +40,8 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+          docker rm -f $(docker ps -qa)
+          docker rmi ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
           sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
           sudo docker-compose up -d
           

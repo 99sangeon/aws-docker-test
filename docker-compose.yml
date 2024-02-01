@@ -1,9 +1,9 @@
-version : "3.3"
+version: '3.3'
 services:
-  app:
-    container_name: springboot-webserver
-    restart: always
+
+  spring:
+    container_name: springboot-container
     image: jeonsangeon/springboot
     ports:
-      - "8080:8080"
+      - 8080:8080
 
