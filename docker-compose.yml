@@ -3,7 +3,7 @@ services:
 
   spring:
     container_name: springboot-container
-    image: jeonsangeon/springboot
+    image: jeonsangeon/springboot:latest
     expose:
       - 8080
     ports:
