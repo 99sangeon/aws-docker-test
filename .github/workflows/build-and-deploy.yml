@@ -33,19 +33,15 @@ jobs:
         docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest .
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/springboot:latest
 
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
     - name: Deploy to AWS EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
           sudo docker rm -f $(docker ps -qa)
+          sudo docker rmi ${{ secrets.DOCKER_USERNAME }}/springboot:latest
           sudo docker pull ${{ secrets.DOCKER_REPO }}/springboot:latest
           sudo docker-compose up -d
-          sudo docker image prune -f
-        EOF    
           
-      
-    
