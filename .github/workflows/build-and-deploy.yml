@@ -41,10 +41,6 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         envs: GITHUB_SHA
-      run: |
-          sudo docker rm -f $(docker ps -qa)
-          sudo docker pull ${{ secrets.DOCKER_REPO }}/springboot:latest
-          sudo docker-compose up -d
-          sudo docker image prune -f
+
       
     
