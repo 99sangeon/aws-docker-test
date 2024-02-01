@@ -1,34 +1,9 @@
 version : "3.3"
 services:
-  database:
-    image: mysql:latest
-    restart: always
-    container_name: mysql-container
-    environment:
-      MYSQL_DATABASE: test
-      MYSQL_ROOT_PASSWORD: 0204
-    volumes:
-      - ./db:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    networks:
-      - springboot-mysql-network
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    container_name: springboot-webserver
     restart: always
+    image: jeonsangeon/springboot
     ports:
-      - "80:80"
-    depends_on:
-      - database
-    container_name: springboot-container
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/test?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: 0204
-    networks:
-      - springboot-mysql-network
-networks:
-  springboot-mysql-network:
-    driver: bridge
+      - "8080:8080"
+
