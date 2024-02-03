@@ -30,6 +30,6 @@ public class BoardController {
     @PostMapping("/save")
     public String save(@ModelAttribute BoardRequest boardRequest) {
         boardService.save(boardRequest);
-        return "redirect:boards/list";
+        return "redirect:/boards/list";
     }
 }
