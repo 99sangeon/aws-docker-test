@@ -10,8 +10,6 @@ jobs:
   build-and-deploy:
 
     runs-on: ubuntu-latest
-    env:
-      jasypt.encryptor.key: ${{ secrets.JASYPT }}
     permissions:
       contents: read
 
@@ -22,6 +20,10 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+
+    - run: touch ./src/main/resources/application-secret.properties
+    - run: echo "${{ secrets.APPLICATION_SECRET }}" > ./src/main/resources/application-secret.properties
+    - run: cat ./src/main/resources/application-secret.properties
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@ec92e829475ac0c2315ea8f9eced72db85bb337a # v3.0.0
