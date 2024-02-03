@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("boards")
+@RequestMapping("/boards")
 @RequiredArgsConstructor
 public class BoardController {
 
@@ -24,12 +24,12 @@ public class BoardController {
     public String list(Model model) {
         List<BoardResponse> boards = boardService.findAll();
         model.addAttribute("boards", boards);
-        return "/board/list";
+        return "board/list";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute BoardRequest boardRequest) {
         boardService.save(boardRequest);
-        return "redirect:/boards/list";
+        return "redirect:boards/list";
     }
 }
