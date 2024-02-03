@@ -1,16 +1,16 @@
 server:
   port: 8080
 
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://mysql-container:3306/test?serverTimezone=UTC&characterEncoding=UTF-8
-#    username: root
-#    password: '0204'
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        format_sql: true
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(79MrIeXqna2hR0XnVdthbzRK2rFjmHI7BCVC5ykl54s4pkWuyxgNaUXdRjGhsDpB9PxxNwoCzjkEPbmFO/NTwOB2NhPF9JT2gEKrBpnAXR41zyC8dpxpm66xDKYkORHvaYQI/I5CRbJW9+pBeOmjUKwNurBviSyUc4KHUXIPh1VeLbIQE5NDlJJlyi3GfyVw)
+    username: ENC(MbGX0toTGl/MRru6dPDcng==)
+    password: ENC(ZZjZ0NIxG2mwTYEcazez21PGrKthiCXn)
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
 

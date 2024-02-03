@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+    <form action="/boards/save" th:method="post" style="margin-top: 50px; margin-bottom: 20px;">
+        <input type="text" name="content" style="width: 200px" placeholder="방명록을 작성해보세요!">
+        <input type="submit" value="작성하기">
+    </form>
+
+    <table style="border: 1px solid gray; border-collapse: collapse;">
+        <thead>
+            <tr style="border: 1px solid gray;">
+                <th style="border: 1px solid gray;">번호</th>
+                <th>내용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border: 1px solid gray;" th:each="board : ${boards}">
+                <td style="border: 1px solid gray;" th:text="${board.id}">번호</td>
+                <td th:text="${board.content}">내용</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
