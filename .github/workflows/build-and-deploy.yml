@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      jasypt.encryptor.key: ${{ JASYPT }}
+      jasypt.encryptor.key: ${{ secrets.JASYPT }}
     permissions:
       contents: read
 
